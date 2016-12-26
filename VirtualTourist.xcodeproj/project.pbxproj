@@ -15,6 +15,10 @@
 		C020C8D91E117DE00016F922 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C8D81E117DE00016F922 /* VirtualTouristTests.swift */; };
 		C020C8E41E117DE00016F922 /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C8E31E117DE00016F922 /* VirtualTouristUITests.swift */; };
 		C020C8F31E11BC990016F922 /* VTModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */; };
+		C020C90F1E11BEED0016F922 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90B1E11BEED0016F922 /* Photo+CoreDataClass.swift */; };
+		C020C9101E11BEED0016F922 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90C1E11BEED0016F922 /* Photo+CoreDataProperties.swift */; };
+		C020C9111E11BEED0016F922 /* Pin+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90D1E11BEED0016F922 /* Pin+CoreDataClass.swift */; };
+		C020C9121E11BEED0016F922 /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90E1E11BEED0016F922 /* Pin+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		C020C8E31E117DE00016F922 /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		C020C8E51E117DE00016F922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C020C8F21E11BC990016F922 /* VTModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VTModel.xcdatamodel; sourceTree = "<group>"; };
+		C020C90B1E11BEED0016F922 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C020C90C1E11BEED0016F922 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C020C90D1E11BEED0016F922 /* Pin+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pin+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C020C90E1E11BEED0016F922 /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +87,8 @@
 		C020C8B71E117DDF0016F922 = {
 			isa = PBXGroup;
 			children = (
-				C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */,
+				C020C8FD1E11BE780016F922 /* Controller */,
+				C020C8FC1E11BE710016F922 /* Model */,
 				C020C8C21E117DE00016F922 /* VirtualTourist */,
 				C020C8D71E117DE00016F922 /* VirtualTouristTests */,
 				C020C8E21E117DE00016F922 /* VirtualTouristUITests */,
@@ -126,6 +135,25 @@
 				C020C8E51E117DE00016F922 /* Info.plist */,
 			);
 			path = VirtualTouristUITests;
+			sourceTree = "<group>";
+		};
+		C020C8FC1E11BE710016F922 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C020C90B1E11BEED0016F922 /* Photo+CoreDataClass.swift */,
+				C020C90C1E11BEED0016F922 /* Photo+CoreDataProperties.swift */,
+				C020C90D1E11BEED0016F922 /* Pin+CoreDataClass.swift */,
+				C020C90E1E11BEED0016F922 /* Pin+CoreDataProperties.swift */,
+				C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C020C8FD1E11BE780016F922 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +224,7 @@
 				TargetAttributes = {
 					C020C8BF1E117DDF0016F922 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					C020C8D31E117DE00016F922 = {
@@ -264,6 +293,10 @@
 			files = (
 				C020C8C61E117DE00016F922 /* ViewController.swift in Sources */,
 				C020C8C41E117DE00016F922 /* AppDelegate.swift in Sources */,
+				C020C90F1E11BEED0016F922 /* Photo+CoreDataClass.swift in Sources */,
+				C020C9121E11BEED0016F922 /* Pin+CoreDataProperties.swift in Sources */,
+				C020C9111E11BEED0016F922 /* Pin+CoreDataClass.swift in Sources */,
+				C020C9101E11BEED0016F922 /* Photo+CoreDataProperties.swift in Sources */,
 				C020C8F31E11BC990016F922 /* VTModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,10 +447,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirtualTourist-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,10 +463,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VirtualTourist/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VirtualTourist-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

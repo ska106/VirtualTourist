@@ -14,6 +14,7 @@
 		C020C8CE1E117DE00016F922 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C020C8CC1E117DE00016F922 /* LaunchScreen.storyboard */; };
 		C020C8D91E117DE00016F922 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C8D81E117DE00016F922 /* VirtualTouristTests.swift */; };
 		C020C8E41E117DE00016F922 /* VirtualTouristUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C8E31E117DE00016F922 /* VirtualTouristUITests.swift */; };
+		C020C8F31E11BC990016F922 /* VTModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C020C8DF1E117DE00016F922 /* VirtualTouristUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualTouristUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C020C8E31E117DE00016F922 /* VirtualTouristUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristUITests.swift; sourceTree = "<group>"; };
 		C020C8E51E117DE00016F922 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C020C8F21E11BC990016F922 /* VTModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VTModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		C020C8B71E117DDF0016F922 = {
 			isa = PBXGroup;
 			children = (
+				C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */,
 				C020C8C21E117DE00016F922 /* VirtualTourist */,
 				C020C8D71E117DE00016F922 /* VirtualTouristTests */,
 				C020C8E21E117DE00016F922 /* VirtualTouristUITests */,
@@ -261,6 +264,7 @@
 			files = (
 				C020C8C61E117DE00016F922 /* ViewController.swift in Sources */,
 				C020C8C41E117DE00016F922 /* AppDelegate.swift in Sources */,
+				C020C8F31E11BC990016F922 /* VTModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -427,6 +432,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.agrawal.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -521,6 +527,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C020C8F11E11BC990016F922 /* VTModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C020C8F21E11BC990016F922 /* VTModel.xcdatamodel */,
+			);
+			currentVersion = C020C8F21E11BC990016F922 /* VTModel.xcdatamodel */;
+			path = VTModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C020C8B81E117DDF0016F922 /* Project object */;
 }

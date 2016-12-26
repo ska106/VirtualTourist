@@ -35,6 +35,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="cgb-98-NQn"/>
                     <connections>
+                        <outlet property="mapview" destination="ZpJ-PF-Ake" id="2Np-E1-Vgo"/>
                         <segue destination="r5h-Vw-dgr" kind="show" id="WcK-RN-mkg"/>
                     </connections>
                 </viewController>
@@ -117,6 +118,9 @@
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="J0P-FF-2Bm">
                         <barButtonItem key="leftBarButtonItem" title="&lt; OK" id="N5c-Fc-qk1"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="A1J-Cc-EZz" id="A6W-8F-ela"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FEd-n4-rMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

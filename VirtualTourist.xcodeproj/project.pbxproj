@@ -19,6 +19,8 @@
 		C020C9101E11BEED0016F922 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90C1E11BEED0016F922 /* Photo+CoreDataProperties.swift */; };
 		C020C9111E11BEED0016F922 /* Pin+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90D1E11BEED0016F922 /* Pin+CoreDataClass.swift */; };
 		C020C9121E11BEED0016F922 /* Pin+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C90E1E11BEED0016F922 /* Pin+CoreDataProperties.swift */; };
+		C020C9141E11C65F0016F922 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C9131E11C65F0016F922 /* MapViewController.swift */; };
+		C020C9161E11C7E70016F922 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020C9151E11C7E70016F922 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		C020C90C1E11BEED0016F922 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C020C90D1E11BEED0016F922 /* Pin+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pin+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C020C90E1E11BEED0016F922 /* Pin+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pin+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C020C9131E11C65F0016F922 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		C020C9151E11C7E70016F922 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 		C020C8FD1E11BE780016F922 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				C020C9131E11C65F0016F922 /* MapViewController.swift */,
+				C020C9151E11C7E70016F922 /* CollectionViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C020C9161E11C7E70016F922 /* CollectionViewController.swift in Sources */,
 				C020C8C61E117DE00016F922 /* ViewController.swift in Sources */,
 				C020C8C41E117DE00016F922 /* AppDelegate.swift in Sources */,
 				C020C90F1E11BEED0016F922 /* Photo+CoreDataClass.swift in Sources */,
@@ -298,6 +305,7 @@
 				C020C9111E11BEED0016F922 /* Pin+CoreDataClass.swift in Sources */,
 				C020C9101E11BEED0016F922 /* Photo+CoreDataProperties.swift in Sources */,
 				C020C8F31E11BC990016F922 /* VTModel.xcdatamodeld in Sources */,
+				C020C9141E11C65F0016F922 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,6 +50,7 @@ class FlickrClient
     //Search Photos
     func searchPhotos()
     {
+        
     }
     //DownloadPhotos
     func downloadPhotos()

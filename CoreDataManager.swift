@@ -25,7 +25,7 @@ struct CoreDataManager
     let backgroundContext : NSManagedObjectContext
     let context : NSManagedObjectContext
     
-    static let sharedInstance = CoreDataManager(modelName: "Virtual_Tourist")!
+    static let sharedInstance = CoreDataManager(modelName: "VTModel")!
     
     
     init?(modelName: String)

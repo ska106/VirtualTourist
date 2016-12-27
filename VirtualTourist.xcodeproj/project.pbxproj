@@ -16,6 +16,7 @@
 		C0CCFF9E1E11DD71001B75C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0CCFF9D1E11DD71001B75C4 /* Assets.xcassets */; };
 		C0CCFFA11E11DD71001B75C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CCFF9F1E11DD71001B75C4 /* LaunchScreen.storyboard */; };
 		C0CCFFAA1E11DE30001B75C4 /* VTModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C0CCFFA81E11DE30001B75C4 /* VTModel.xcdatamodeld */; };
+		C0F96CA91E11E7E400E11632 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F96CA81E11E7E400E11632 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C0CCFFA01E11DD71001B75C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0CCFFA21E11DD71001B75C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0CCFFA91E11DE30001B75C4 /* VTModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VTModel.xcdatamodel; sourceTree = "<group>"; };
+		C0F96CA81E11E7E400E11632 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		C0CCFF8A1E11DD71001B75C4 = {
 			isa = PBXGroup;
 			children = (
+				C0F96CAA1E11E7EB00E11632 /* Storage */,
 				C088B3901E11E43700E1B4D8 /* Model */,
 				C088B38D1E11E3FD00E1B4D8 /* View */,
 				C088B3881E11E2FF00E1B4D8 /* Controller */,
@@ -98,6 +101,14 @@
 				C0CCFFA21E11DD71001B75C4 /* Info.plist */,
 			);
 			path = VirtualTourist;
+			sourceTree = "<group>";
+		};
+		C0F96CAA1E11E7EB00E11632 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				C0F96CA81E11E7E400E11632 /* CoreDataManager.swift */,
+			);
+			name = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +188,7 @@
 				C0CCFFAA1E11DE30001B75C4 /* VTModel.xcdatamodeld in Sources */,
 				C088B38C1E11E3C500E1B4D8 /* PhotoAlbumViewController.swift in Sources */,
 				C088B38F1E11E41200E1B4D8 /* Photocell.swift in Sources */,
+				C0F96CA91E11E7E400E11632 /* CoreDataManager.swift in Sources */,
 				C088B38A1E11E31000E1B4D8 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

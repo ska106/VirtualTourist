@@ -4,10 +4,8 @@
 //
 //  Created by Sudeep Agrawal on 12/26/16.
 //  Copyright © 2016 Agrawal. All rights reserved.
-//
 
 import Foundation
-
 import CoreData
 
 typealias BatchTask=(_ workerContext: NSManagedObjectContext) -> ()
@@ -16,8 +14,6 @@ enum CoreDataManagerNotifications : String
 {
     case ImportingTaskDidFinish = "ImportingTaskDidFinish"
 }
-
-
 
 struct CoreDataManager
 {

@@ -79,7 +79,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="USa-8y-MSL">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="USa-8y-MSL" customClass="Photocell" customModule="VirtualTourist" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -97,6 +97,9 @@
                                             <constraint firstAttribute="bottom" secondItem="Ydp-3Q-X3H" secondAttribute="bottom" id="OzS-Dl-5u4"/>
                                             <constraint firstAttribute="trailing" secondItem="Ydp-3Q-X3H" secondAttribute="trailing" id="YMH-KZ-UKl"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="Ydp-3Q-X3H" id="fHj-oF-ICi"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

@@ -98,7 +98,7 @@ class FlickrClient
                 guard let stat = data?[Response.Key.Status] as? String, stat == "OK" else
                 {
                     print("Flickr API returned an error. See error code and message in \(data)")
-                    completionHandlerForSearchPhotos(nil, NSError(domain: Error.Domain.searchMethod, code: 5001, userInfo: [NSLocalizedDescriptionKey:Error.Message.Error_Occurred]))
+                    completionHandlerForSearchPhotos(nil, NSError(domain: Error.Domain.SearchMethod, code: 5001, userInfo: [NSLocalizedDescriptionKey:Error.Message.Error_Occurred]))
                     return
                 }
                 
@@ -120,7 +120,7 @@ class FlickrClient
                 }
                 else
                 {
-                    completionHandlerForSearchPhotos(nil, NSError(domain: Error.Domain.searchMethod, code: 5002, userInfo: [NSLocalizedDescriptionKey: Error.Message.Invalid_Response]))
+                    completionHandlerForSearchPhotos(nil, NSError(domain: Error.Domain.SearchMethod, code: 5002, userInfo: [NSLocalizedDescriptionKey: Error.Message.Invalid_Response]))
                 }
             }
             else
@@ -129,5 +129,23 @@ class FlickrClient
                 completionHandlerForSearchPhotos(nil,error)
             }
         }
+    }
+    
+    //Download photos based on the provided photo URL.
+    func downloadPhotos(photoURL:String, completionHandlerForDownloadPhotos: @escaping (_ image: NSData?, _ error: NSError?) -> Void)
+    {
+        let url = NSURL(string: photoURL)
+        let request = URLRequest(url: url! as URL)
+
+        let task = session.dataTask(with: request){ data, response, error in
+            
+            guard let data = data else
+            {
+                completionHandlerForDownloadPhotos(nil, NSError(domain: Error.Domain.DownloadMethod, code: 6001, userInfo: [NSLocalizedDescriptionKey: Error.Message.Download_Not_Possible]))
+                return
+            }
+            completionHandlerForDownloadPhotos(data as NSData, nil)
+        }
+        task.resume()
     }
 }

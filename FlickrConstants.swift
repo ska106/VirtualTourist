@@ -74,13 +74,15 @@ extension FlickrClient
     {
         struct Domain
         {
-            static let searchMethod="FLICKR.SEARCH_PHOTOS"
+            static let SearchMethod="VT.SEARCH_PHOTOS"
+            static let DownloadMethod="VT.DOWNLOAD_PHOTOS"
         }
         
         struct Message
         {
             static let Error_Occurred = "Error occurrred in API response."
             static let Invalid_Response = "API response is not parsable for necessary information."
+            static let Download_Not_Possible = "Unable to download pic."
         }
     }
 }

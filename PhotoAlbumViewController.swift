@@ -15,6 +15,9 @@ class PhotoAlbumViewController:UIViewController
 {
     @IBOutlet weak var mapView: MKMapView!
     
+    // this will keep track of the current location
+    var pin: Pin!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

@@ -36,17 +36,17 @@
                     <navigationItem key="navigationItem" title="Virtual Tourist" id="cgb-98-NQn"/>
                     <connections>
                         <outlet property="mapview" destination="ZpJ-PF-Ake" id="2Np-E1-Vgo"/>
-                        <segue destination="r5h-Vw-dgr" kind="show" id="WcK-RN-mkg"/>
+                        <segue destination="r5h-Vw-dgr" kind="show" identifier="showAlbum" id="rB3-cZ-bYj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1163.5" y="133.5"/>
+            <point key="canvasLocation" x="1210" y="133"/>
         </scene>
-        <!--Virtual Tourist-->
+        <!--PhotoAlbum-->
         <scene sceneID="BIC-KB-aCO">
             <objects>
-                <viewController id="r5h-Vw-dgr" customClass="PhotoAlbumViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r5h-Vw-dgr" userLabel="PhotoAlbum" customClass="PhotoAlbumViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RyT-PO-Tmu"/>
                         <viewControllerLayoutGuide type="bottom" id="R7M-hu-Fv3"/>
@@ -145,7 +145,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dt0-cV-uac" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="576.5" y="133.5"/>
+            <point key="canvasLocation" x="415" y="133"/>
         </scene>
     </scenes>
 </document>

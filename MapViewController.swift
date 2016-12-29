@@ -70,7 +70,6 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     // Here we create a view with a "right callout accessory view". You might choose to look into other
     // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
     // method in TableViewDataSource.
-    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
         let reuseId = "pin"
@@ -78,16 +77,16 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     
         if pinView == nil
         {
+            // Force Initialize pinView.
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.red
         }
-            
         else
         {
             pinView!.annotation = annotation
         }
+        pinView!.pinTintColor = UIColor.red
         pinView?.animatesDrop = true
+        pinView?.isDraggable = true
         return pinView
     }
     
@@ -121,12 +120,12 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-      /*  if segue.identifier == "showCollection"
+        if segue.identifier == "showAlbum"
         {
-            let photosVC = segue.destinationViewController as! CollectionViewController
+            let photosVC = segue.destination as! PhotoAlbumViewController
             let annotation = sender as! Pin
             photosVC.pin = annotation
-        } */
+        }
     }
     
     func loadMapDefaults()
@@ -136,6 +135,22 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         let span = MKCoordinateSpanMake(50, 40)
         let region = MKCoordinateRegionMake(coordinate, span)
         self.mapview.setRegion(region, animated: true)
-        self.mapview.isZoomEnabled = true
     }
+    
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+        let annotation = view.annotation
+        //mapView.deselectAnnotation(annotation!, animated: false)
+        mapview.selectAnnotation(annotation!, animated: false)
+        performSegue(withIdentifier: "showAlbum", sender: annotation)
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    {
+        let annotation = view.annotation
+        mapview.selectAnnotation(annotation!, animated: false)
+        performSegue(withIdentifier: "showAlbum", sender: annotation)
+    }
+
 }

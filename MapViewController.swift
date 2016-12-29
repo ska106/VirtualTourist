@@ -28,13 +28,18 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         super.viewDidLoad()
         
         mapview.delegate = self
-        //Ref :http://stackoverflow.com/questions/29241691/how-do-i-use-uilongpressgesturerecognizer-with-a-uicollectionviewcell-in-swift
-        let lpgr = UILongPressGestureRecognizer(target: self, action: "addPinToMap:")
-        lpgr.delegate = self
-        self.mapview.addGestureRecognizer(lpgr)
-        
+        addGestureRecognizer()
         loadMapDefaults()
         loadPinsFromDatabase()
+    }
+    
+    func addGestureRecognizer()
+    {
+        //Ref :http://stackoverflow.com/questions/29241691/how-do-i-use-uilongpressgesturerecognizer-with-a-uicollectionviewcell-in-swift
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.addPinToMap(gestureRecognizer:)))
+        lpgr.minimumPressDuration = 2.0   // two second hold for  pin creation
+        lpgr.delegate = self
+        self.mapview.addGestureRecognizer(lpgr)
     }
     
     func addPinToMap(gestureRecognizer: UILongPressGestureRecognizer)
@@ -46,8 +51,15 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
             let latitude = coordinate.latitude
             let longitude = coordinate.longitude
             print ("\(latitude) \(longitude)")
-           // let annotation = Pin(latitude: latitude, longitude: longitude, context: stack.context)
-           // mapview.addAnnotation(annotation)
+           
+            //Initialize Pin.
+            let pin = Pin(context: stack.context)
+            pin.latitude = latitude
+            pin.longitude = longitude
+            
+            let annotation:MKAnnotation = pin as! MKAnnotation
+            
+            mapview.addAnnotation(annotation)
             stack.save()
         }
     }

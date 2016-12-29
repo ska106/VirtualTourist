@@ -94,8 +94,8 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     func loadPinsFromDatabase()
     {
         var pins = [Pin]()
+        var annotations = [MKAnnotation]()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Pin")
-        
         do
         {
             let results = try stack.context.fetch(fetchRequest)
@@ -109,7 +109,14 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         {
             print("Couldn't find any Pins")
         }
-        //mapview.addAnnotations(pins as! [MKAnnotation])
+        
+        for (_,item) in pins.enumerated()
+        {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(item.latitude),longitude: CLLocationDegrees(item.longitude))
+            annotations.append(annotation)
+        }
+        mapview.addAnnotations(annotations)
     }
     
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -124,35 +131,11 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     
     func loadMapDefaults()
     {
-        guard let centerCoordinateLatitude = UserDefaults.standard.value(forKey:"centerCoordinateLatitude") as? CLLocationDegrees else
-        {
-            return
-        }
-        guard let centerCoordinateLongitude = UserDefaults.standard.value(forKey:"centerCoordinateLongitude") as? CLLocationDegrees else {
-            return
-        }
-        mapview.centerCoordinate = CLLocationCoordinate2DMake(centerCoordinateLatitude, centerCoordinateLongitude)
-    }
-    
-
-    
-    /*func mapView(_ didSelectmapView: MKMapView, didSelectAnnotationView view: MKAnnotationView)
-    {
-        let annotation = view.annotation as! Pin
-        mapview.deselectAnnotation(annotation, animated: false)
-        performSegue(withIdentifier: "showCollection", sender: annotation)
- 
-    }*/
-    
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
-    {
-        centerCoordinateLatitude = mapView.centerCoordinate.latitude
-        centerCoordinateLongitude = mapView.centerCoordinate.longitude
-    }
-    
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
-    {
-        UserDefaults.standard.set(mapView.centerCoordinate.latitude, forKey: "centerCoordinateLatitude")
-        UserDefaults.standard.set(mapView.centerCoordinate.longitude, forKey: "centerCoordinateLongitude")
+        //Ref: http://sweettutos.com/2015/04/24/swift-mapkit-tutorial-series-how-to-search-a-place-address-or-poi-in-the-map/
+        let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 40.78, longitude: 78.96)
+        let span = MKCoordinateSpanMake(50, 40)
+        let region = MKCoordinateRegionMake(coordinate, span)
+        self.mapview.setRegion(region, animated: true)
+        self.mapview.isZoomEnabled = true
     }
 }

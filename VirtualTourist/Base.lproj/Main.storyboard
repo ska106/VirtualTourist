@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="ToolButton" destination="36j-OT-wRQ" id="66T-X3-7sZ"/>
                         <outlet property="collectionView" destination="tDv-ac-0tc" id="j10-lA-Bsa"/>
+                        <outlet property="collectionViewFlowLayout" destination="dVT-qm-COi" id="y0B-Ph-WSE"/>
                         <outlet property="mapView" destination="A1J-Cc-EZz" id="A6W-8F-ela"/>
                     </connections>
                 </viewController>

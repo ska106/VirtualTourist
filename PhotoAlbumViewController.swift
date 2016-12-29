@@ -16,6 +16,8 @@ class PhotoAlbumViewController:UIViewController
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var ToolButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    
     
     let flickrClient = FlickrClient.sharedInstance
     let stack = CoreDataManager.sharedInstance
@@ -83,6 +85,22 @@ extension PhotoAlbumViewController: MKMapViewDelegate
 // MARK: - UICollectionViewDelegate
 extension PhotoAlbumViewController:UICollectionViewDelegate
 {
+    //Action to be taken when an image is clicked in the Collection View.
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! Photocell
+        if let index = selectedPhotos.index(of: indexPath as NSIndexPath)
+        {
+            selectedPhotos.remove(at: index)
+        }
+        else
+        {
+            selectedPhotos.append(indexPath as NSIndexPath)
+        }
+        configureCellSection(cell: cell, indexPath: indexPath as NSIndexPath)
+    }
+    
+    //Configure the Collection Cell
     func configureCellSection(cell: Photocell, indexPath: NSIndexPath)
     {
         if let _ = selectedPhotos.index(of: indexPath)
@@ -116,6 +134,8 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
         //Download photos from Flickr API.
         flickrClient.downloadPhotos(photoURL: pic.url!){ (image, error)  in
 
+            cell.activityIndicator.startAnimating()
+            
             //Check if the image data is not nil
             guard let imageData = image,
                   let downloadedImage = UIImage(data: imageData as Data) else

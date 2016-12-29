@@ -118,16 +118,6 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         mapview.addAnnotations(annotations)
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if segue.identifier == "showAlbum"
-        {
-            let photosVC = segue.destination as! PhotoAlbumViewController
-            let annotation = sender as! Pin
-            photosVC.pin = annotation
-        }
-    }
-    
     func loadMapDefaults()
     {
         //Ref: http://sweettutos.com/2015/04/24/swift-mapkit-tutorial-series-how-to-search-a-place-address-or-poi-in-the-map/
@@ -137,7 +127,6 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         self.mapview.setRegion(region, animated: true)
     }
     
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
         let annotation = view.annotation
@@ -146,11 +135,13 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         performSegue(withIdentifier: "showAlbum", sender: annotation)
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl)
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        let annotation = view.annotation
-        mapview.selectAnnotation(annotation!, animated: false)
-        performSegue(withIdentifier: "showAlbum", sender: annotation)
+        if segue.identifier == "showAlbum"
+        {
+            let photosVC = segue.destination as! PhotoAlbumViewController
+            let annotation = sender as! Pin
+            photosVC.pin = annotation
+        }
     }
-
 }

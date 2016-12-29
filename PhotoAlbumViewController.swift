@@ -79,6 +79,19 @@ class PhotoAlbumViewController:UIViewController
     //Delete Selected Photos
     func deleteSelectedPhotos()
     {
+        var picsToDelete = [Photos]()
+        //Step 1: Get all the pics to be deleted based on the cell selection.
+        for indexPath in selectedPhotos
+        {
+            picsToDelete.append(fetchedResultsController.object(at: indexPath as IndexPath) as! Photos)
+        }
+        //Step 2: Delete the pics from the stack.
+        for pic in picsToDelete
+        {
+            stack.context.delete(pic)
+        }
+        stack.save()
+        selectedPhotos = []
     }
     
     @IBAction func tapToolButton(_ sender: Any)

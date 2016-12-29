@@ -47,21 +47,48 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         if gestureRecognizer.state == UIGestureRecognizerState.began
         {
             let point = gestureRecognizer.location(in: mapview)
+            
+            // Get the coordinates from the touch point.
             let coordinate = mapview.convert(point, toCoordinateFrom: mapview)
             let latitude = coordinate.latitude
             let longitude = coordinate.longitude
-            print ("\(latitude) \(longitude)")
+            print ("Coordinates of the Pin [LAT LONG] : \(latitude) \(longitude)")
            
             //Initialize Pin.
             let pin = Pin(context: stack.context)
             pin.latitude = latitude
             pin.longitude = longitude
             
-            let annotation:MKAnnotation = pin as! MKAnnotation
-            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
             mapview.addAnnotation(annotation)
             stack.save()
         }
+    }
+    
+    // MARK: - MKMapViewDelegate
+    // Here we create a view with a "right callout accessory view". You might choose to look into other
+    // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
+    // method in TableViewDataSource.
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let reuseId = "pin"
+        var pinView = mapview.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+    
+        if pinView == nil
+        {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = UIColor.red
+        }
+            
+        else
+        {
+            pinView!.annotation = annotation
+        }
+        pinView?.animatesDrop = true
+        return pinView
     }
     
     func loadPinsFromDatabase()
@@ -107,14 +134,7 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         mapview.centerCoordinate = CLLocationCoordinate2DMake(centerCoordinateLatitude, centerCoordinateLongitude)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
-    {
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-        pinView?.animatesDrop = true
-        return pinView
-    }
+
     
     /*func mapView(_ didSelectmapView: MKMapView, didSelectAnnotationView view: MKAnnotationView)
     {

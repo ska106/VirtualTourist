@@ -67,8 +67,13 @@ class PhotoAlbumViewController:UIViewController
     }
     
     //Delete all Photos 
-    func deletePhotos()
+    func deleteAllPhotos()
     {
+        for pic in fetchedResultsController.fetchedObjects as! [Photos]
+        {
+            stack.context.delete(pic)
+        }
+        stack.save()
     }
     
     //Delete Selected Photos
@@ -80,7 +85,7 @@ class PhotoAlbumViewController:UIViewController
     {
         if selectedPhotos.isEmpty
         {
-            deletePhotos()
+            deleteAllPhotos()
             searchNSavePhotos()
         }
         else

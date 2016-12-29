@@ -79,7 +79,7 @@ class FlickrClient
         [
             Request.ParamKey.Method:Request.ParamVal.Method as AnyObject,
             Request.ParamKey.APIKey:Request.ParamVal.APIKey as AnyObject,
-            Request.ParamKey.BoundingBox:self.makeBoundaryBoxString(lat: latitude, long: longitude) as AnyObject,
+            //Request.ParamKey.BoundingBox:self.makeBoundaryBoxString(lat: latitude, long: longitude) as AnyObject,
             Request.ParamKey.Extras:Request.ParamVal.MediumURL as AnyObject,
             Request.ParamKey.Format:Request.ParamVal.Format as AnyObject,
             Request.ParamKey.NoJSONCallback:Request.ParamVal.DisableJSONCallback as AnyObject,

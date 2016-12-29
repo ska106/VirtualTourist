@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class Converter
 {
@@ -44,5 +45,21 @@ class Converter
             //Failure has occurred, don't return any results.
             completionHandler(nil, error)
         }
+    }
+    
+    //Mark : This method will convert a Pin into MKPointAnnotation
+    static func toMKAnnotation(_ from: Pin) -> MKPointAnnotation
+    {
+        let toAnnotation = MKPointAnnotation()
+        toAnnotation.coordinate = CLLocationCoordinate2DMake(CLLocationDegrees(from.latitude), CLLocationDegrees(from.longitude))
+        return toAnnotation
+    }
+    
+    //Mark : This method will convert MKAnnotation into Pin
+    static func toPin (_ from:MKAnnotation, _ to:Pin) -> Pin
+    {
+        to.latitude = from.coordinate.latitude
+        to.longitude = from.coordinate.longitude
+        return to
     }
 }

@@ -130,18 +130,16 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
         let annotation = view.annotation
-        //mapView.deselectAnnotation(annotation!, animated: false)
         mapview.selectAnnotation(annotation!, animated: false)
-        performSegue(withIdentifier: "showAlbum", sender: annotation)
+        performSegue(withIdentifier: "showAlbum", sender: annotation )
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.identifier == "showAlbum"
         {
             let photosVC = segue.destination as! PhotoAlbumViewController
-            let annotation = sender as! Pin
-            photosVC.pin = annotation
+            photosVC.pin = Converter.toPin(sender as! MKAnnotation, Pin(context: stack.context))
         }
     }
 }

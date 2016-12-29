@@ -41,17 +41,20 @@ class PhotoAlbumViewController:UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        initializeMapView()
-        initializeFlowLayout()
-    }
-    
-    //Initialize the MapView
-    func initializeMapView()
-    {
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         mapView.delegate = self
-        mapView.addAnnotation(self.pin as! MKAnnotation)
+        mapView.addAnnotation(Converter.toMKAnnotation(self.pin))
         mapView.camera.centerCoordinate = CLLocationCoordinate2DMake(pin.latitude, pin.longitude)
         mapView.camera.altitude = 10000
+        
+        initializeFlowLayout()
+        if fetchPhotos().isEmpty
+        {
+            searchNSavePhotos()
+        }
     }
     
     // Initialize the CollectionView and FlowLayout

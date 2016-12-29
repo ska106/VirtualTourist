@@ -39,11 +39,31 @@ class PhotoAlbumViewController:UIViewController
     {
         super.viewDidLoad()
         mapView.delegate = self
+        mapView.camera.altitude = 10000
     }
     
     //Search New Photos
-    func searchPhotos()
+    func searchNSavePhotos()
     {
+        flickrClient.searchPhotos(latitude: pin.latitude, longitude: pin.longitude){ (photoURLs, error) in
+
+            guard photoURLs != nil else
+            {
+                return
+            }
+            // Save the photo in the DB, as we have some photo urls
+            DispatchQueue.main.async
+            {
+                //loop through all the Photo URLs in the array.
+                for url in photoURLs!
+                {
+                    let photo = Photos(context: self.stack.context)
+                    photo.pin = self.pin
+                    photo.url = url
+                }
+                self.stack.save()
+            }
+        }
     }
     
     //Delete all Photos 
@@ -61,7 +81,7 @@ class PhotoAlbumViewController:UIViewController
         if selectedPhotos.isEmpty
         {
             deletePhotos()
-            searchPhotos()
+            searchNSavePhotos()
         }
         else
         {

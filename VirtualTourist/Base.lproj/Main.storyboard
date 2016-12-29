@@ -59,7 +59,11 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="jEf-Qr-6kB"/>
-                                    <barButtonItem title="New Collection" id="36j-OT-wRQ" userLabel="New Collection"/>
+                                    <barButtonItem title="New Collection" id="36j-OT-wRQ" userLabel="New Collection">
+                                        <connections>
+                                            <action selector="tapToolButton:" destination="r5h-Vw-dgr" id="ysE-7p-RKC"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="uWx-bj-6Ss"/>
                                 </items>
                             </toolbar>
@@ -89,6 +93,9 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-3Q-X3H">
                                                     <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
                                                 </imageView>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="F39-fw-rwO">
+                                                    <rect key="frame" x="39" y="39" width="20" height="20"/>
+                                                </activityIndicatorView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -96,8 +103,11 @@
                                             <constraint firstItem="Ydp-3Q-X3H" firstAttribute="leading" secondItem="USa-8y-MSL" secondAttribute="leading" id="8iX-K4-xa9"/>
                                             <constraint firstAttribute="bottom" secondItem="Ydp-3Q-X3H" secondAttribute="bottom" id="OzS-Dl-5u4"/>
                                             <constraint firstAttribute="trailing" secondItem="Ydp-3Q-X3H" secondAttribute="trailing" id="YMH-KZ-UKl"/>
+                                            <constraint firstItem="F39-fw-rwO" firstAttribute="centerX" secondItem="Ydp-3Q-X3H" secondAttribute="centerX" id="dsk-2z-tLI"/>
+                                            <constraint firstItem="F39-fw-rwO" firstAttribute="centerY" secondItem="Ydp-3Q-X3H" secondAttribute="centerY" id="yMp-Nd-cin"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="F39-fw-rwO" id="CeA-mh-qID"/>
                                             <outlet property="imageView" destination="Ydp-3Q-X3H" id="fHj-oF-ICi"/>
                                         </connections>
                                     </collectionViewCell>
@@ -122,6 +132,8 @@
                         <barButtonItem key="leftBarButtonItem" title="&lt; OK" id="N5c-Fc-qk1"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ToolButton" destination="36j-OT-wRQ" id="66T-X3-7sZ"/>
+                        <outlet property="collectionView" destination="tDv-ac-0tc" id="j10-lA-Bsa"/>
                         <outlet property="mapView" destination="A1J-Cc-EZz" id="A6W-8F-ela"/>
                     </connections>
                 </viewController>

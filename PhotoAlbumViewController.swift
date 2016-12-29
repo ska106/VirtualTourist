@@ -26,6 +26,9 @@ class PhotoAlbumViewController:UIViewController
     var pin: Pin!
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     
+    var insertIndexCache: [NSIndexPath]!
+    var deleteIndexCache: [NSIndexPath]!
+    
     //Set the title of the Tool Button accordingly.
     var selectedPhotos = [NSIndexPath]()
     {
@@ -38,15 +41,53 @@ class PhotoAlbumViewController:UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        initializeMapView()
+        initializeFlowLayout()
+    }
+    
+    //Initialize the MapView
+    func initializeMapView()
+    {
         mapView.delegate = self
+        mapView.addAnnotation(self.pin as! MKAnnotation)
+        mapView.camera.centerCoordinate = CLLocationCoordinate2DMake(pin.latitude, pin.longitude)
         mapView.camera.altitude = 10000
+    }
+    
+    // Initialize the CollectionView and FlowLayout
+    func initializeFlowLayout()
+    {
+        // For the image to scale properly.
+        collectionView?.contentMode = UIViewContentMode.scaleAspectFit
+        
+        collectionView?.backgroundColor = UIColor.white
+        
+        let space : CGFloat = 2.0
+        //decide the dimension based on the orientation of the device.
+        let dimension = (UIDevice.current.orientation.isPortrait) ?  (self.view.frame.width - (2 * space)) / 3.0 : (self.view.frame.height - (2 * space)) / 3.0
+        collectionViewFlowLayout.minimumInteritemSpacing = space
+        collectionViewFlowLayout.minimumLineSpacing = space
+        collectionViewFlowLayout.itemSize = CGSize(width: dimension, height: dimension)
+    }
+    
+    @IBAction func tapToolButton(_ sender: Any)
+    {
+        if selectedPhotos.isEmpty
+        {
+            deleteAllPhotos()
+            searchNSavePhotos()
+        }
+        else
+        {
+            deleteSelectedPhotos()
+        }
     }
     
     //Search New Photos
     func searchNSavePhotos()
     {
         flickrClient.searchPhotos(latitude: pin.latitude, longitude: pin.longitude){ (photoURLs, error) in
-
+            
             guard photoURLs != nil else
             {
                 return
@@ -66,7 +107,7 @@ class PhotoAlbumViewController:UIViewController
         }
     }
     
-    //Delete all Photos 
+    //Delete all Photos
     func deleteAllPhotos()
     {
         for pic in fetchedResultsController.fetchedObjects as! [Photos]
@@ -92,19 +133,6 @@ class PhotoAlbumViewController:UIViewController
         }
         stack.save()
         selectedPhotos = []
-    }
-    
-    @IBAction func tapToolButton(_ sender: Any)
-    {
-        if selectedPhotos.isEmpty
-        {
-            deleteAllPhotos()
-            searchNSavePhotos()
-        }
-        else
-        {
-            deleteSelectedPhotos()
-        }
     }
 }
 
@@ -197,5 +225,58 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
             self.configureCellSection(cell: cell, indexPath: indexPath as NSIndexPath)
         }
         return cell
+    }
+}
+
+extension PhotoAlbumViewController: NSFetchedResultsControllerDelegate
+{
+    func fetchPhotos() -> [Photos]
+    {
+        var photos = [Photos]()
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Photos")
+        fetchRequest.sortDescriptors = []
+        fetchRequest.predicate = NSPredicate(format: "pin = %@", pin)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: stack.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do
+        {
+            try fetchedResultsController.performFetch()
+            if let results = fetchedResultsController.fetchedObjects as? [Photos]
+            {
+                photos = results
+            }
+        }
+        catch
+        {
+            print("Error while trying to fetch photos.")
+        }
+        return photos
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        insertIndexCache = [NSIndexPath]()
+        deleteIndexCache = [NSIndexPath]()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
+    {
+        collectionView.performBatchUpdates(
+            {
+                self.collectionView.insertItems(at: self.insertIndexCache as [IndexPath])
+                self.collectionView.deleteItems(at: self.deleteIndexCache as [IndexPath])
+            }, completion: nil)
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?)
+    {
+        switch type
+        {
+            case .insert: insertIndexCache.append(newIndexPath! as NSIndexPath)
+            case .delete: deleteIndexCache.append(newIndexPath! as NSIndexPath)
+            default: break
+        }
     }
 }

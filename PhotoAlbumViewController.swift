@@ -41,6 +41,8 @@ class PhotoAlbumViewController:UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+     
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = UIBarButtonItem(title: "OK",style:.plain,target: nil,action: nil)
         
         collectionView.delegate = self
         collectionView.dataSource = self

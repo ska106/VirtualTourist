@@ -16,7 +16,6 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
 {
     @IBOutlet weak var mapview: MKMapView!
     
-    let className = "MapViewController"
     let stack = CoreDataManager.sharedInstance
     var centerCoordinate: CLLocationCoordinate2D?
     var centerCoordinateLongitude: CLLocationDegrees?
@@ -26,7 +25,6 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         mapview.delegate = self
         addGestureRecognizer()
         loadMapDefaults()

@@ -128,9 +128,7 @@
                             <constraint firstItem="JIn-gn-4e8" firstAttribute="leading" secondItem="E9B-Rd-OBW" secondAttribute="leading" id="ke5-Dk-j9F"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Virtual Tourist" id="J0P-FF-2Bm">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; OK" id="N5c-Fc-qk1"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Photo Album" id="J0P-FF-2Bm"/>
                     <connections>
                         <outlet property="ToolButton" destination="36j-OT-wRQ" id="66T-X3-7sZ"/>
                         <outlet property="collectionView" destination="tDv-ac-0tc" id="j10-lA-Bsa"/>

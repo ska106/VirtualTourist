@@ -88,14 +88,14 @@ class FlickrClient
         ]
 
         let requestURL = URLRequest(url: getMethodURL(using: methodParameters));
-        
+        print(requestURL)
         makeTaskCall(req: requestURL){ (data, error) in
         
             if error == nil
             {
                 //Success - No error in response
                 //Check the reponse for OK (stat).
-                guard let stat = data?[Response.Key.Status] as? String, stat == "OK" else
+                guard let stat = data?[Response.Key.Status] as? String, stat == "ok" else
                 {
                     print("Flickr API returned an error. See error code and message in \(data)")
                     completionHandlerForSearchPhotos(nil, NSError(domain: Error.Domain.SearchMethod, code: 5001, userInfo: [NSLocalizedDescriptionKey:Error.Message.Error_Occurred]))

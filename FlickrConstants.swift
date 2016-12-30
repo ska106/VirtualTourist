@@ -15,7 +15,7 @@ extension FlickrClient
         //Ref: www.grokswift.com/building-urls
         static let APIScheme = "https"
         static let APIHost = "api.flickr.com"
-        static let APIPath = "/services/rest"
+        static let APIPath = "/services/rest/"
         
         
         static let PhotoLimit = 20
@@ -47,12 +47,13 @@ extension FlickrClient
     
         struct ParamVal
         {
-            static let Method = "flickr.photos.search"
+            //static let Method = "flickr.photos.search"
+            static let Method = "flickr.photos.getRecent"
             static let APIKey = "c9e2bdb5c6d04dfd0c58742eb4215dfc"
             static let MediumURL = "url_m"
             static let Format = "json"
             static let DisableJSONCallback = "1"
-            static let PhotosPerPage = "25"
+            static let PhotosPerPage = "10"
         }
     }
     

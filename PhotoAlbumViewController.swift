@@ -279,8 +279,11 @@ extension PhotoAlbumViewController: NSFetchedResultsControllerDelegate
     {
         switch type
         {
-            case .insert: insertIndexCache.append(newIndexPath! as NSIndexPath)
-            case .delete: deleteIndexCache.append(newIndexPath! as NSIndexPath)
+            case .insert:   insertIndexCache.append(newIndexPath! as NSIndexPath)
+            case .delete:   if newIndexPath != nil
+                            {
+                                deleteIndexCache.append(newIndexPath! as NSIndexPath)
+                            }
             default: break
         }
     }

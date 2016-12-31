@@ -11,7 +11,6 @@
 		C088B38C1E11E3C500E1B4D8 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088B38B1E11E3C500E1B4D8 /* PhotoAlbumViewController.swift */; };
 		C088B38F1E11E41200E1B4D8 /* Photocell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088B38E1E11E41200E1B4D8 /* Photocell.swift */; };
 		C0CCFF971E11DD71001B75C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CCFF961E11DD71001B75C4 /* AppDelegate.swift */; };
-		C0CCFF991E11DD71001B75C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CCFF981E11DD71001B75C4 /* ViewController.swift */; };
 		C0CCFF9C1E11DD71001B75C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CCFF9A1E11DD71001B75C4 /* Main.storyboard */; };
 		C0CCFF9E1E11DD71001B75C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0CCFF9D1E11DD71001B75C4 /* Assets.xcassets */; };
 		C0CCFFA11E11DD71001B75C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0CCFF9F1E11DD71001B75C4 /* LaunchScreen.storyboard */; };
@@ -28,7 +27,6 @@
 		C088B38E1E11E41200E1B4D8 /* Photocell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photocell.swift; sourceTree = "<group>"; };
 		C0CCFF931E11DD71001B75C4 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0CCFF961E11DD71001B75C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C0CCFF981E11DD71001B75C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0CCFF9B1E11DD71001B75C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0CCFF9D1E11DD71001B75C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0CCFFA01E11DD71001B75C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				C0CCFF961E11DD71001B75C4 /* AppDelegate.swift */,
-				C0CCFF981E11DD71001B75C4 /* ViewController.swift */,
 				C0CCFF9A1E11DD71001B75C4 /* Main.storyboard */,
 				C0CCFF9D1E11DD71001B75C4 /* Assets.xcassets */,
 				C0CCFF9F1E11DD71001B75C4 /* LaunchScreen.storyboard */,
@@ -208,7 +205,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0CCFF991E11DD71001B75C4 /* ViewController.swift in Sources */,
 				C0F96CB01E12A60E00E11632 /* FlickrConstants.swift in Sources */,
 				C0CCFF971E11DD71001B75C4 /* AppDelegate.swift in Sources */,
 				C0CCFFAA1E11DE30001B75C4 /* VTModel.xcdatamodeld in Sources */,

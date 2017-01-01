@@ -160,13 +160,6 @@ extension PhotoAlbumViewController:UICollectionViewDelegate
     {
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! Photocell
         
-        //The new images must not load on top of the old ones
-        DispatchQueue.main.async
-        {
-            cell.imageView.image = nil
-            cell.activityIndicator.startAnimating()
-        }
-
         if let index = selectedPhotos.index(of: indexPath as NSIndexPath)
         {
             selectedPhotos.remove(at: index)
@@ -212,11 +205,11 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
         // If there is not pic in Core data, issue the download.
         if pic.image == nil
         {
+            cell.activityIndicator.startAnimating()
+            
             //Download photos from Flickr API.
             flickrClient.downloadPhotos(photoURL: pic.url!){ (image, error)  in
 
-                cell.activityIndicator.startAnimating()
-            
                 //Check if the image data is not nil
                 guard let imageData = image,
                       let downloadedImage = UIImage(data: imageData as Data) else

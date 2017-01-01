@@ -130,7 +130,11 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
         let annotation = view.annotation
         mapview.selectAnnotation(annotation!, animated: false)
         performSegue(withIdentifier: "showAlbum", sender: annotation )
+        
+        //Deselect the annotation here so that it's again selectable when we return from the album view:
+        mapView.deselectAnnotation(annotation, animated: true)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

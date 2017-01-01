@@ -84,7 +84,7 @@ class FlickrClient
             Request.ParamKey.Format:Request.ParamVal.Format as AnyObject,
             Request.ParamKey.NoJSONCallback:Request.ParamVal.DisableJSONCallback as AnyObject,
             Request.ParamKey.PerPage:Request.ParamVal.PhotosPerPage as AnyObject,
-            Request.ParamKey.Page:"\(arc4random_uniform(50))" as AnyObject
+            Request.ParamKey.Page:"\(arc4random_uniform(10))" as AnyObject
         ]
 
         let requestURL = URLRequest(url: getMethodURL(using: methodParameters));

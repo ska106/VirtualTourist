@@ -159,6 +159,15 @@ extension PhotoAlbumViewController:UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let cell = collectionView.cellForItem(at: indexPath as IndexPath) as! Photocell
+        
+        //The new images must not load on top of the old ones
+        DispatchQueue.main.async
+        {
+            cell.imageView.image = nil
+            cell.activityIndicator.startAnimating()
+            cell.activityIndicator.isHidden = false
+        }
+
         if let index = selectedPhotos.index(of: indexPath as NSIndexPath)
         {
             selectedPhotos.remove(at: index)

@@ -165,7 +165,6 @@ extension PhotoAlbumViewController:UICollectionViewDelegate
         {
             cell.imageView.image = nil
             cell.activityIndicator.startAnimating()
-            cell.activityIndicator.isHidden = false
         }
 
         if let index = selectedPhotos.index(of: indexPath as NSIndexPath)
@@ -210,31 +209,35 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
         //Get the Photo Image saved in the DB.
         let pic = fetchedResultsController.object(at: indexPath) as! Photos
         
-        //Download photos from Flickr API.
-        flickrClient.downloadPhotos(photoURL: pic.url!){ (image, error)  in
+        // If there is not pic in Core data, issue the download.
+        if pic.image == nil
+        {
+            //Download photos from Flickr API.
+            flickrClient.downloadPhotos(photoURL: pic.url!){ (image, error)  in
 
-            cell.activityIndicator.startAnimating()
+                cell.activityIndicator.startAnimating()
             
-            //Check if the image data is not nil
-            guard let imageData = image,
-                  let downloadedImage = UIImage(data: imageData as Data) else
-            {
-                return
-            }
-            
-            DispatchQueue.main.async
-            {
-                pic.image = imageData
-                self.stack.save()
-                
-                if let updateCell = self.collectionView.cellForItem(at: indexPath) as? Photocell
+                //Check if the image data is not nil
+                guard let imageData = image,
+                      let downloadedImage = UIImage(data: imageData as Data) else
                 {
-                    updateCell.imageView.image = downloadedImage
-                    updateCell.activityIndicator.stopAnimating()
+                    return
                 }
+            
+                DispatchQueue.main.async
+                {
+                    pic.image = imageData
+                    self.stack.save()
+                
+                    if let updateCell = self.collectionView.cellForItem(at: indexPath) as? Photocell
+                    {
+                        updateCell.imageView.image = downloadedImage
+                        updateCell.activityIndicator.stopAnimating()
+                    }
+                }
+                cell.imageView.image = UIImage(data: imageData as Data)
+                self.configureCellSection(cell: cell, indexPath: indexPath as NSIndexPath)
             }
-            cell.imageView.image = UIImage(data: imageData as Data)
-            self.configureCellSection(cell: cell, indexPath: indexPath as NSIndexPath)
         }
         return cell
     }

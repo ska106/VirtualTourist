@@ -35,7 +35,7 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     {
         //Ref :http://stackoverflow.com/questions/29241691/how-do-i-use-uilongpressgesturerecognizer-with-a-uicollectionviewcell-in-swift
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(self.addPinToMap(gestureRecognizer:)))
-        lpgr.minimumPressDuration = 2.0   // two second hold for  pin creation
+        lpgr.minimumPressDuration = 0.5   // half-second hold for  pin creation
         lpgr.delegate = self
         self.mapview.addGestureRecognizer(lpgr)
     }

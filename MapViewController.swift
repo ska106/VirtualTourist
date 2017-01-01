@@ -140,8 +140,28 @@ class MapViewController : UIViewController, MKMapViewDelegate, UIGestureRecogniz
     {
         if segue.identifier == "showAlbum"
         {
+            // First find the selected Pin in Core Data, if found send the associated Pin annotation to PhotoViewController. 
+            var pin: Pin!
+            do
+            {
+                let pinAnnotation = sender as! MKAnnotation
+                
+                let fetchRequest = NSFetchRequest<Pin>(entityName: "Pin")
+                let predicate = NSPredicate(format: "latitude == %@ AND longitude == %@", argumentArray: [pinAnnotation.coordinate.latitude, pinAnnotation.coordinate.longitude])
+                fetchRequest.predicate = predicate
+                let pins = try stack.context.fetch(fetchRequest)
+                
+                pin = pins[0]
+            }
+            catch let error as NSError
+            {
+                print("failed to get pin by object id")
+                print(error.localizedDescription)
+                return
+            }
+            
             let photosVC = segue.destination as! PhotoAlbumViewController
-            photosVC.pin = Converter.toPin(sender as! MKAnnotation, Pin(context: stack.context))
+            photosVC.pin = Converter.toPin(sender as! MKAnnotation, pin)
         }
     }
 }

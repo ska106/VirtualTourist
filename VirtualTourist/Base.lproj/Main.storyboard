@@ -93,7 +93,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ydp-3Q-X3H">
                                                     <rect key="frame" x="0.0" y="0.0" width="99" height="99"/>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="F39-fw-rwO">
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="F39-fw-rwO">
                                                     <rect key="frame" x="39" y="39" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>

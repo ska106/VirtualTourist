@@ -18,7 +18,6 @@ class PhotoAlbumViewController:UIViewController
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
-    
     let flickrClient = FlickrClient.sharedInstance
     let stack = CoreDataManager.sharedInstance
     
@@ -193,7 +192,7 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
         //Ref: https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/CollectionViewPGforIOS/CreatingCellsandViews/CreatingCellsandViews.html
         return fetchedResultsController.sections![section].numberOfObjects
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         //Get the Collection Cell
@@ -223,7 +222,6 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
                 {
                     updateCell.imageView.image = downloadedImage
                     updateCell.activityIndicator.stopAnimating()
-                    updateCell.activityIndicator.isHidden = true
                 }
             }
             cell.imageView.image = UIImage(data: imageData as Data)

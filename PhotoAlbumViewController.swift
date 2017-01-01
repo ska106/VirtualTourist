@@ -232,6 +232,11 @@ extension PhotoAlbumViewController:UICollectionViewDataSource
                 self.configureCellSection(cell: cell, indexPath: indexPath as NSIndexPath)
             }
         }
+        else
+        {
+            // Display the image loaded from Core data.
+            cell.imageView.image = UIImage(data: pic.image as! Data)
+        }
         return cell
     }
 }
